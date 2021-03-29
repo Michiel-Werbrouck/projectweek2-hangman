@@ -20,6 +20,8 @@ public class TestFX extends Application
         pane.add(label,0,0);
         pane.add(invoer,0,1);
         pane.add(uitvoer,0,2);
+        pane.setLayoutX(10);
+        pane.setLayoutY(10);
 
         invoer.setOnAction(eventInvoer -> {
             uitvoer.setText("Welkom " + invoer.getText() + " bij je eerste stappen met JavaFx");
