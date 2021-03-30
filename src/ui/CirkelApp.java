@@ -35,8 +35,7 @@ public class CirkelApp {
         invoerX.setOnAction(eventIngaveX ->{
             try
             {
-
-                x=Integer.parseInt(invoerX.getText());
+                x = Integer.parseInt(invoerX.getText());
                 invoerX.setDisable(true);
                 root.add(invoerYLabel, 0, 1);
                 root.add(invoerY, 1, 1);
@@ -54,14 +53,13 @@ public class CirkelApp {
             try
             {
                 punt = new Punt(Integer.parseInt(invoerX.getText()), Integer.parseInt(invoerY.getText()));
+                invoerY.setDisable(true);
                 root.add(invoerRadiusLabel,0,2);
                 root.add(invoerRadius,1,2);
             }
             catch(NumberFormatException e)
             {
-
                 invoerY.clear();
-
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("y coordinaat moet een geheel getal zijn");
                 foutenboodschap.showAndWait();
