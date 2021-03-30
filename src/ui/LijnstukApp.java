@@ -37,7 +37,7 @@ public class LijnstukApp {
         root.add(invoerXStartLabel, 0, 0);
         root.add(invoerXStart, 1, 0);
 
-        invoerXStart.setOnAction(eventIngaveX -> {
+        invoerXStart.setOnAction(eventIngaveXStart -> {
             try {
                 Integer.parseInt(invoerXStart.getText());
                 root.add(invoerYStartLabel, 0, 1);
@@ -50,13 +50,13 @@ public class LijnstukApp {
             }
         });
 
-        invoerYStart.setOnAction(eventIngaveY -> {
+        invoerYStart.setOnAction(eventIngaveYStart -> {
             try {
                 startPunt = new Punt(Integer.parseInt(invoerXStart.getText()), Integer.parseInt(invoerYStart.getText()));
-                root.getChildren().clear();
+                root.add(invoerXEindLabel,0,2);
+                root.add(invoerXEind,1,2);
 
             } catch (NumberFormatException e) {
-
                 invoerYStart.clear();
 
                 foutenboodschap.setTitle("Warning");
@@ -65,14 +65,11 @@ public class LijnstukApp {
             }
         });
 
-        root.add(invoerXEindLabel, 0, 0);
-        root.add(invoerXEind, 1, 0);
-
-        invoerXEind.setOnAction(eventIngaveX -> {
+        invoerXEind.setOnAction(eventIngaveXEind -> {
             try {
                 Integer.parseInt(invoerXEind.getText());
-                root.add(invoerYEindLabel, 0, 1);
-                root.add(invoerYEind, 1, 1);
+                root.add(invoerYEindLabel, 0, 3);
+                root.add(invoerYEind, 1, 3);
             } catch (NumberFormatException e) {
                 invoerXEind.clear();
                 foutenboodschap.setTitle("Warning");
@@ -81,7 +78,7 @@ public class LijnstukApp {
             }
         });
 
-        invoerYEind.setOnAction(eventIngaveY -> {
+        invoerYEind.setOnAction(eventIngaveYEind -> {
             try {
                 eindPunt = new Punt(Integer.parseInt(invoerXEind.getText()), Integer.parseInt(invoerYEind.getText()));
                 lijnStuk = new LijnStuk(startPunt, eindPunt);

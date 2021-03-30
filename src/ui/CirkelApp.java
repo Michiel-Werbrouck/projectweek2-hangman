@@ -35,7 +35,6 @@ public class CirkelApp {
         invoerX.setOnAction(eventIngaveX ->{
             try
             {
-
                 x=Integer.parseInt(invoerX.getText());
                 invoerX.setDisable(true);
                 root.add(invoerYLabel, 0, 1);
