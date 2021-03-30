@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Punt {
+public class Punt implements Comparable<Punt> {
    public int x;
    public int y;
 
@@ -32,4 +32,16 @@ public class Punt {
     public String toString() {
         return "(" + x + ", " + y + ')';
     }
+
+    @Override
+    public int compareTo(Punt punt) {
+        if (this.x == punt.getX()) {
+            return 0;
+        } else if (this.x > punt.getX()) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
 }
