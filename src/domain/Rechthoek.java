@@ -6,14 +6,15 @@ public class Rechthoek {
     private int breedte;
     private int hoogte;
     private Punt linkerBovenhoek;
+    private Omhullende omhullende;
 
     public Rechthoek(Punt linkerBovenhoek, int breedte, int hoogte){
-        if(breedte < 0){
+        if(breedte <= 0){
             throw new DomainException("De breedte mag niet negatief zijn");
         }
         this.breedte = breedte;
 
-        if(hoogte < 0){
+        if(hoogte <= 0){
             throw new DomainException("De hoogte mag niet negatief zijn");
         }
         this.hoogte = hoogte;
@@ -22,6 +23,8 @@ public class Rechthoek {
             throw new DomainException("Er moet een linker bovenhoek zijn");
         }
         this.linkerBovenhoek = linkerBovenhoek;
+
+        this.omhullende = new Omhullende(linkerBovenhoek, breedte, hoogte);
     }
 
     public int getBreedte() {
@@ -36,6 +39,10 @@ public class Rechthoek {
         return linkerBovenhoek;
     }
 
+    public Omhullende getOmhullende() {
+        return omhullende;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,10 +55,7 @@ public class Rechthoek {
 
     @Override
     public String toString() {
-        return "Rechthoek{" +
-                "breedte=" + breedte +
-                ", hoogte=" + hoogte +
-                ", linkerBovenHoek=" + linkerBovenhoek +
-                '}';
+        return "Rechthoek: positie: " + linkerBovenhoek.toString() + " - breedte: " + breedte + " - hoogte: " + hoogte
+                + "\n" + omhullende.toString();
     }
 }

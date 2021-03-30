@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 public class FxPuntApp extends Application {
 
-
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();

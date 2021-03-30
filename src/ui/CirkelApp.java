@@ -26,11 +26,8 @@ public class CirkelApp {
         invoerRadiusLabel = new Label("Geef de straal van de cirkel.");
         invoerRadius = new TextField();
 
-
         root.add(invoerXLabel,0,0);
         root.add(invoerX,1,0);
-
-
 
         invoerX.setOnAction(eventIngaveX ->{
             try

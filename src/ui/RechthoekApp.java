@@ -14,8 +14,8 @@ public class RechthoekApp {
     private TextField invoerX, invoerY, invoerBreedte, invoerHoogte;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
-    Punt linkerbovenhoek;
-    Rechthoek rechthoek;
+    private Punt linkerbovenhoek;
+    private Rechthoek rechthoek;
     private int x, y, breedte, hoogte;
 
     public RechthoekApp(GridPane root) {
