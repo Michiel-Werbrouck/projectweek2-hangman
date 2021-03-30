@@ -3,7 +3,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Cirkel {
+public class Cirkel extends Vorm {
     private Punt middelpunt;
     private int radius;
 

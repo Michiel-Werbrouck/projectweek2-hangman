@@ -1,20 +1,20 @@
 package ui;
 
-import domain.Tekening;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class FxCirkelApp extends Application {
+public class FxTekeningApp extends Application {
+
 
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        Scene scene = new Scene(root, 800,600);
-        new CirkelApp(root);
+        Scene scene = new Scene(root);
+        new TekeningApp(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Figuur App");
+        primaryStage.setTitle("Almost hangman :) ");
         primaryStage.show();
     }
 
