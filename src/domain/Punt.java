@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Objects;
-
 public class Punt implements Comparable<Punt> {
    public int x;
    public int y;

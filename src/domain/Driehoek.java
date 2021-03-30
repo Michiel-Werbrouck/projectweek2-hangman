@@ -2,6 +2,8 @@ package domain;
 
 import domain.Punt;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Driehoek extends Vorm {
@@ -41,31 +43,20 @@ public class Driehoek extends Vorm {
         return ((hoekPunt2.getX() - hoekPunt1.getX()) * (hoekPunt3.getY() - hoekPunt1.getY()) == ((hoekPunt3.getX() - hoekPunt1.getX()) * (hoekPunt2.getY() - hoekPunt1.getY())));
     }
 
-    private void sorteerHoekpunten() {
-        Punt hoogstePunt = hoekPunt3;
-        Punt middelstePunt = hoekPunt2;
-        Punt laagstePunt = hoekPunt1;
-        if (hoekPunt1.compareTo(hoekPunt2) == 1) {
-            middelstePunt = hoekPunt1;
-            laagstePunt = hoekPunt2;
-
-        } else {
-            middelstePunt = hoekPunt2;
-            laagstePunt = hoekPunt1;
-        }
-        if (hoogstePunt.compareTo(hoekPunt3) == 1) {
-            hoogstePunt = middelstePunt;
-            if (laagstePunt.compareTo(hoekPunt3) == 1) {
-                middelstePunt = laagstePunt;
-                laagstePunt = hoekPunt3;
+    public void sorteerHoekPunten()
+    {
+        ArrayList<Punt> punten = new ArrayList<>();
+        punten.add(hoekPunt1);
+        punten.add(hoekPunt2);
+        punten.add(hoekPunt3);
+        punten.sort((p1, p2) -> {
+            if (p1.getX() != p2.getX()) {
+                return Integer.compare(p1.getX(), p2.getX());
             } else {
-                middelstePunt = hoekPunt3;
+                return Integer.compare(p1.getY(), p2.getY());
             }
-        } else {
-            hoogstePunt = hoekPunt3;
-        }
+        });
     }
-
 
     @Override
     public boolean equals(Object o) {

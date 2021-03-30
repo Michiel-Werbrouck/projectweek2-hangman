@@ -10,79 +10,71 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class DriehoekApp {
-    private Label hoekPunt1Label, hoekPunt2Label, hoekPunt3Label;
-    private TextField invoerHoekPunt1, invoerHoekPunt2, invoerHoekPunt3;
     private Alert foutenboodschap = new Alert(Alert.AlertType.WARNING);
 
     private Punt hoekPunt1, hoekPunt2, hoekPunt3;
     private Driehoek driehoek;
-    private int x, y, breedte, hoogte;
+    private GridPane root;
+
+    private int x, y, index;
 
     public DriehoekApp(GridPane root) {
+        this.root = root;
 
-        hoekPunt1Label =  new Label("Geef de x-coordinaat van de linkerbovenhoek.");
-        invoerHoekPunt1= new TextField();
-        hoekPunt2Label = new Label("Geef de y-coordinaat van de linkerbovenhoek.");
-        invoerHoekPunt2 = new TextField();
-        hoekPunt3Label = new Label("Geef de breedte van de rechthoek.");
-        invoerHoekPunt3 = new TextField();
+        hoekPunt1 = puntInput("hoekpunt 1");
+        hoekPunt2 = puntInput("hoekpunt 2");
+        hoekPunt3 = puntInput("hoekpunt 3");
 
+        root.getChildren().clear();
 
-        root.add(hoekPunt1Label,0,0);
-        root.add(invoerHoekPunt1,1,0);
+        /*Driehoek driehoek = new Driehoek(hoekPunt1, hoekPunt2, hoekPunt3);
+        driehoek.sorteerHoekPunten();
 
-        invoerHoekPunt1.setOnAction(eventIngaveX ->{
+        Text uitvoer = new Text();
+        uitvoer.setText(driehoek.toString());
+        root.getChildren().clear();
+        root.add(uitvoer, 0, 0);*/
+    }
+
+    public Punt puntInput(String puntNaam) {
+        Label puntLabel =  new Label("Geef de x-coordinaat en y-coordinaat van " + puntNaam);
+        TextField invoerPuntX = new TextField();
+        TextField invoerPuntY = new TextField();
+
+        root.add(puntLabel,0,index);
+        root.add(invoerPuntX,1,index);
+        root.add(invoerPuntY, 2, index);
+
+        invoerPuntX.setOnAction(eventIngaveX ->{
             try
             {
-                x = Integer.parseInt(invoerHoekPunt1.getText());
-                invoerHoekPunt1.setDisable(true);
-                root.add(hoekPunt2Label, 0, 1);
-                root.add(invoerHoekPunt2, 1, 1);
+                x = Integer.parseInt(invoerPuntX.getText());
             }
             catch(NumberFormatException e)
             {
-                invoerHoekPunt1.clear();
+                invoerPuntX.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("x coordinaat moet een geheel getal zijn");
                 foutenboodschap.showAndWait();
             }
         });
 
-        invoerHoekPunt2.setOnAction(eventIngaveY -> {
+        invoerPuntY.setOnAction(eventIngaveY ->{
             try
             {
-              //  linkerbovenhoek = new Punt(Integer.parseInt(invoerHoekPunt1.getText()), Integer.parseInt(invoerHoekPunt2.getText()));
-                invoerHoekPunt2.setDisable(true);
-                root.add(hoekPunt3Label,0,2);
-                root.add(invoerHoekPunt3,1,2);
+                y = Integer.parseInt(invoerPuntY.getText());
             }
             catch(NumberFormatException e)
             {
-                invoerHoekPunt2.clear();
+                invoerPuntY.clear();
                 foutenboodschap.setTitle("Warning");
                 foutenboodschap.setContentText("y coordinaat moet een geheel getal zijn");
                 foutenboodschap.showAndWait();
             }
         });
 
-        invoerHoekPunt3.setOnAction(eventIngaveBreedte ->{
-            try
-            {
-                breedte = Integer.parseInt(invoerHoekPunt3.getText());
-                invoerHoekPunt3.setDisable(true);
-             //   root.add(invoerHoogteLabel, 0, 3);
-             //   root.add(invoerHoogte, 1, 3);
-            }
-            catch(NumberFormatException e)
-            {
-                invoerHoekPunt3.clear();
-                foutenboodschap.setTitle("Warning");
-                foutenboodschap.setContentText("breedte moet positief zijn");
-                foutenboodschap.showAndWait();
-            }
-        });
+        index += 1;
 
-
-
+        return new Punt(x, y);
     }
 }
