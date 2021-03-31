@@ -5,9 +5,11 @@ import java.util.Objects;
 public class LijnStuk extends Vorm {
     private Punt startPunt;
     private Punt eindPunt;
+    private Omhullende omhullende;
 
     public LijnStuk(Punt startPunt, Punt eindPunt){
         setStartPuntEnEindPunt(startPunt, eindPunt);
+        this.omhullende = new Omhullende(startPunt,eindPunt.getX() - startPunt.getX(),startPunt.getX());
     }
 
     public Punt getEindPunt() {
@@ -46,9 +48,12 @@ public class LijnStuk extends Vorm {
 
     @Override
     public String toString() {
-        return "Lijn: startpunt: " + startPunt + " - eindPunt: " + eindPunt;
+        return "Lijn: startpunt: " + startPunt + " - eindPunt: " + eindPunt + "\n" + omhullende.toString();
     }
 
 
-
+    @Override
+    public Omhullende getOmhullende() {
+        return omhullende;
+    }
 }

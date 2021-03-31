@@ -29,22 +29,22 @@ public class OmhullendeTest {
 
     @Test
     public void equals_moet_true_teruggeven_als_minimumx_gelijk_is_aan_linkerbovenhoek_x() {
-        assertTrue(omhullende.getMinimumX() == omhullende.getLinkerBovenhoek().x);
+        assertTrue(omhullende.getMinimumX() == omhullende.getLinkerBovenhoek().getX());
     }
 
     @Test
     public void equals_moet_true_teruggeven_als_minimumy_gelijk_is_aan_linkerbovenhoek_y() {
-        assertTrue(omhullende.getMinimumY() == omhullende.getLinkerBovenhoek().y);
+        assertTrue(omhullende.getMinimumY() == omhullende.getLinkerBovenhoek().getY());
     }
 
     @Test
     public void equals_moet_true_teruggeven_als_maximumx_gelijk_is_aan_linkerbovenhoek_x_plus_breedte() {
-        assertTrue(omhullende.getMaximumX() == omhullende.getLinkerBovenhoek().x + omhullende.getBreedte());
+        assertTrue(omhullende.getMaximumX() == omhullende.getLinkerBovenhoek().getX() + omhullende.getBreedte());
     }
 
     @Test
     public void equals_moet_true_teruggeven_als_maximumy_gelijk_is_aan_linkerbovenhoek_y_plus_hoogte() {
-        assertTrue(omhullende.getMaximumY() == omhullende.getLinkerBovenhoek().y + omhullende.getHoogte());
+        assertTrue(omhullende.getMaximumY() == omhullende.getLinkerBovenhoek().getY() + omhullende.getHoogte());
     }
 
     @Test (expected = DomainException.class)

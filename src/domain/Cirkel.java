@@ -6,18 +6,21 @@ import java.util.Objects;
 public class Cirkel extends Vorm {
     private Punt middelpunt;
     private int radius;
+    private Omhullende omhullende;
 
 
     public Cirkel(Punt middelpunt, int radius){
         if(middelpunt == null){
-            throw new IllegalArgumentException();
+            throw new DomainException("middelpunt mag niet leeg zijn");
         }
         this.middelpunt = middelpunt;
 
         if(radius <= 0 ){
-            throw new IllegalArgumentException();
+            throw new DomainException("radius moet groter zijn als 0");
         }
         this.radius = radius;
+
+        this.omhullende = new Omhullende(new Punt(middelpunt.getX()-radius, middelpunt.getY()-radius),radius*2,radius*2);
     }
 
     private void setMiddelpunt(Punt middelpunt) {
@@ -47,7 +50,11 @@ public class Cirkel extends Vorm {
 
 
     public String toString() {
-        return "Cirkel: middelpunt: (" + this.getMiddelpunt().getX() + ", " + this.getMiddelpunt().getY() + ") - straal: " + this.getRadius();
+        return "Cirkel: middelpunt: (" + this.getMiddelpunt().getX() + ", " + this.getMiddelpunt().getY() + ") - straal: " + this.getRadius() + "\n" + omhullende.toString();
    }
 
+    @Override
+    public Omhullende getOmhullende() {
+        return omhullende;
+    }
 }

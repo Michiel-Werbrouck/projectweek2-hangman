@@ -1,8 +1,8 @@
 package domain;
 
 public class Punt implements Comparable<Punt> {
-   public int x;
-   public int y;
+   private int x;
+   private int y;
 
    public Punt(int x, int y){
        this.x = x;
