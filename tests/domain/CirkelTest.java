@@ -3,76 +3,76 @@ package domain;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 
 public class CirkelTest {
-    private Punt geldigMiddelpunt;
-    private int geldigeRadius;
+    private Punt middelpunt;
+    private int radius;
     private Cirkel cirkel;
+
     @Before
-    public void setUp(){
-        this.geldigMiddelpunt = new Punt(9,9);
-        this.geldigeRadius = 4;
-        this.cirkel = new Cirkel(geldigMiddelpunt, geldigeRadius);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void test_Middelpunt_met_Null_als_getal_gooit_exception(){
-        new Cirkel(null, geldigeRadius);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void test_cirkel_met_radius_0_gooit_exception(){
-        new Cirkel(geldigMiddelpunt,0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void test_Straal_met_negatief_getal_gooit_exception_op(){
-        new Cirkel(geldigMiddelpunt,-4);
+    public void setUp() {
+        middelpunt = new Punt(200, 100);
+        radius = 20;
+        cirkel = new Cirkel(middelpunt,radius);
     }
 
     @Test
-    public void test_2_cirkels_met_zelfde_radius_en_middelpunt_zijn_gelijk() {
-        Cirkel cirkel1 = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        Cirkel cirkel2 = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        assertEquals(cirkel1, cirkel2);
+    public void Cirkel_aanmaken_met_geldig_middelpunt_en_straal(){
+        assertEquals(middelpunt, cirkel.getMiddelpunt());
+        assertEquals(radius, cirkel.getRadius());
+    }
+
+    @Test(expected = DomainException.class)
+    public void Gooit_exception_Cirkel_met_middelpunt_null(){
+        new Cirkel(null,20);
+    }
+
+    @Test(expected = DomainException.class)
+    public void Gooit_exception_Cirkel_met_straal_null(){
+        new Cirkel(middelpunt,-5);
+    }
+
+    @Test(expected = DomainException.class)
+    public void Gooit_exception_Cirkel_met_straal_0(){
+        new Cirkel(middelpunt,-0);
     }
 
     @Test
-    public void test_2_cirkels_zijn_verschillend_met_tweede_cirkel_null() {
-        Cirkel cirkel1 = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        Cirkel cirkel2 = null;
-        assertFalse(cirkel1.equals(cirkel2));
+    public void Equals_moet_true_geven_2_cirkels_zelfde_straal_en_middelpunt(){
+        Cirkel zelfdeCirkel = new Cirkel(middelpunt,radius);
+        assertTrue(cirkel.equals(zelfdeCirkel));
     }
 
     @Test
-    public void test_2_cirkels_met_verschillend_middelpunt_zijn_verschillend() {
-        Cirkel cirkel1 = new Cirkel(new Punt(5, 7), geldigeRadius);
-        Cirkel cirkel2 = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        assertFalse(cirkel1.equals(cirkel2));    }
-
-    @Test
-    public void test_2_cirkels_met_verschillende_straal_zijn_verschillend() {
-        Cirkel cirkel1 = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        Cirkel cirkel2 = new Cirkel(geldigMiddelpunt, 18);
-        assertFalse(cirkel1.equals(cirkel2));
+    public void Equals_false_als_1_cirkel_gelijk_is_aan_null(){
+        Cirkel cirkelNull = null;
+        assertFalse(cirkel.equals(cirkelNull));
     }
 
-
-
-
     @Test
-    public void test_Cirkel_met_geldige_waarde_voor_parameters_maakt_object_met_geldige_eigenschappen(){
-        Cirkel cirkel = new Cirkel(geldigMiddelpunt, geldigeRadius);
-        assertNotNull(cirkel);
-        assertEquals(geldigMiddelpunt, cirkel.getMiddelpunt());
-        assertEquals(geldigeRadius, cirkel.getRadius(), 0.1);
+    public void Equals_false_als_2_cirkels_met_verschillende_middelpunt(){
+        Cirkel cirkelVerschillend = new Cirkel(new Punt(100,200), radius);
+        assertFalse(cirkel.equals(cirkelVerschillend));
 
     }
 
+    @Test
+    public  void Equals_false_als_2_cirkels_met_verschillende_radius()
+    {
+        Cirkel cirkel2 = new Cirkel(middelpunt,1);
+        assertFalse(cirkel.equals(cirkel2));
+    }
 
+    @Test
+    public void test_omhullende_het_juiste_resultaat_geeft()
+    {
+        Punt p = new Punt(200,200);
+        Cirkel c = new Cirkel(p,20);
+        Punt p2 = new Punt(180,180);
+        Omhullende o = new Omhullende(p2, 40,40);
+        assertEquals(c.getOmhullende(),o);
+    }
 
 
 }

@@ -39,9 +39,7 @@ public class Rechthoek extends Vorm {
         return linkerBovenhoek;
     }
 
-    public Omhullende getOmhullende() {
-        return omhullende;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -57,5 +55,10 @@ public class Rechthoek extends Vorm {
     public String toString() {
         return "Rechthoek: positie: " + linkerBovenhoek.toString() + " - breedte: " + breedte + " - hoogte: " + hoogte
                 + "\n" + omhullende.toString();
+    }
+
+    @Override
+    public Omhullende getOmhullende() {
+        return omhullende;
     }
 }

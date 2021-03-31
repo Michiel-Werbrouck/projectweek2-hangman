@@ -10,6 +10,7 @@ public class Driehoek extends Vorm {
     private Punt hoekPunt1;
     private Punt hoekPunt2;
     private Punt hoekPunt3;
+    private Omhullende omhullende;
 
     public Driehoek(Punt punt1, Punt punt2, Punt punt3) {
         if (punt1 == punt2 || punt1 == punt3 || punt2 == punt3) {
@@ -25,6 +26,10 @@ public class Driehoek extends Vorm {
         this.hoekPunt1 = punt1;
         this.hoekPunt2 = punt2;
         this.hoekPunt3 = punt3;
+
+        this.sorteerHoekPunten();
+
+        this.omhullende = new Omhullende(new Punt(hoekPunt1.getX(), hoekPunt3.getY()), hoekPunt3.getX(), hoekPunt3.getY() );
     }
 
     public Punt getHoekPunt1() {
@@ -74,6 +79,13 @@ public class Driehoek extends Vorm {
                 "hoekpunt1: (" + hoekPunt1.getX() + hoekPunt1.getY() +
                 ") - hoekpunt2: (" + hoekPunt2.getX() + hoekPunt2.getY() +
                 ") - hoekpunt3: (" + hoekPunt3.getX() + hoekPunt3.getY() +
-                ')';
+                ')'+ "\n" + omhullende.toString();
     }
+
+    @Override
+    public Omhullende getOmhullende() {
+        return omhullende;
+    }
+
+
 }
