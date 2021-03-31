@@ -1,5 +1,5 @@
 package domain;
-
+import domain.Punt;
 import java.util.Objects;
 
 public class LijnStuk extends Vorm {
@@ -36,6 +36,7 @@ public class LijnStuk extends Vorm {
         LijnStuk lijnStuk = (LijnStuk) o;
         return Objects.equals(startPunt, lijnStuk.startPunt) &&
                 Objects.equals(eindPunt, lijnStuk.eindPunt);
+
     }
 
     @Override
@@ -47,4 +48,7 @@ public class LijnStuk extends Vorm {
     public String toString() {
         return "Lijn: startpunt: " + startPunt + " - eindPunt: " + eindPunt;
     }
+
+
+
 }
