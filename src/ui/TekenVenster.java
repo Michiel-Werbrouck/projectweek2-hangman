@@ -20,7 +20,15 @@ public class TekenVenster {
 
     public void teken(Pane root) {
 
-        Cirkel boomkruin = new Cirkel(new Punt(50,50), 40);
+
+
+
+
+
+
+
+
+       /*Cirkel boomkruin = new Cirkel(new Punt(50,50), 40);
         LijnStuk boomstam = new LijnStuk(new Punt(50,90), new Punt(50,240));
         Rechthoek gebouw = new Rechthoek(new Punt(100, 90), 100, 150);
         Driehoek dak = new Driehoek(new Punt(100, 90), new Punt(200, 90), new Punt(150, 45));
@@ -39,7 +47,7 @@ public class TekenVenster {
         driehoekDak.getPoints().addAll((double) dak.getHoekPunt1().getX(), (double) dak.getHoekPunt1().getY(), (double) dak.getHoekPunt2().getX(),
                 (double) dak.getHoekPunt2().getY(), (double) dak.getHoekPunt3().getX(), (double) dak.getHoekPunt3().getY());
 
-        root.getChildren().addAll(cirkelBoomKruin, lijnBoomstam, rechthoekGebouw, driehoekDak);
+        root.getChildren().addAll(cirkelBoomKruin, lijnBoomstam, rechthoekGebouw, driehoekDak);*/
 
     }
 }

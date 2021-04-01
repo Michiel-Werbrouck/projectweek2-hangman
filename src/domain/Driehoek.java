@@ -1,9 +1,14 @@
 package domain;
 
+import domain.Punt;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Driehoek extends Vorm {
+public class Driehoek extends Vorm implements Drawable {
     private Punt hoekPunt1;
     private Punt hoekPunt2;
     private Punt hoekPunt3;
@@ -85,4 +90,14 @@ public class Driehoek extends Vorm {
     }
 
 
+    @Override
+    public void teken(Graphics graphics) {
+        Graphics2D graphics2D = (Graphics2D) graphics;
+        graphics2D.setStroke(new BasicStroke(5));
+        int[] xPoints = { this.hoekPunt1.getX(), this.hoekPunt2.getX(),
+                this.hoekPunt3.getX() };
+        int[] yPoints = { this.hoekPunt1.getY(), this.hoekPunt2.getY(),
+                this.hoekPunt3.getY() };
+        graphics.drawPolygon(xPoints, yPoints, 3);
+    }
 }
