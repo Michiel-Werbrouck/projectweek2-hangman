@@ -4,6 +4,9 @@ package domain;
 import java.awt.*;
 import java.util.Objects;
 
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 public class Cirkel extends Vorm implements Drawable {
     private Punt middelpunt;
     private int radius;
@@ -64,12 +67,11 @@ public class Cirkel extends Vorm implements Drawable {
     }
 
     @Override
-    public void teken(Graphics graphics) {
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.setStroke(new BasicStroke(5));
-        graphics.drawOval(this.omhullende.getMinimumX(), this
-                .omhullende.getMinimumY(), this.omhullende
-                .getBreedte(), this.omhullende.getHoogte());
+    public void teken(Pane root) {
+        Circle circle = new Circle(middelpunt.getX(),middelpunt.getY(),radius);
+        circle.setFill(Color.GREEN);
+        circle.setStroke(Color.BLACK);
+        root.getChildren().add(circle);
 
     }
 }

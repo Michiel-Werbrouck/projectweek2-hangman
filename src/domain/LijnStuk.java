@@ -1,7 +1,10 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.awt.*;
 import java.util.Objects;
+import javafx.scene.shape.Line;
 
 public class LijnStuk extends Vorm implements Drawable{
     private Punt startPunt;
@@ -68,13 +71,11 @@ public class LijnStuk extends Vorm implements Drawable{
     }
 
     @Override
-    public void teken(Graphics graphics) {
+    public void teken(Pane root) {
 
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.setStroke(new BasicStroke(5));
-        graphics.drawLine(this.startPunt.getX(), this
-                .startPunt.getY(), this.eindPunt.getX(), this
-                .eindPunt.getY());
+        Line line = new Line(startPunt.getX(),startPunt.getY(),eindPunt.getX(),eindPunt.getY());
+        line.setStrokeWidth(5);
+        root.getChildren().add(line);
 
     }
 }

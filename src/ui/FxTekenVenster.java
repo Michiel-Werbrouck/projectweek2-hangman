@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import ui.TekenVenster;
 
 public class FxTekenVenster extends Application {
 
@@ -27,10 +28,12 @@ public class FxTekenVenster extends Application {
             root.getChildren().clear();
             new TekenVenster(root,new Tekening(invoerNaam.getText()));});
 
+
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
 }

@@ -1,7 +1,12 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.awt.*;
 import java.util.Objects;
+
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class Rechthoek extends Vorm implements Drawable {
     private int breedte;
@@ -64,10 +69,10 @@ public class Rechthoek extends Vorm implements Drawable {
     }
 
     @Override
-    public void teken(Graphics graphics) {
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.setStroke(new BasicStroke(5));
-        graphics.drawRect(this.linkerBovenhoek.getX(), this.linkerBovenhoek.getY(), this.breedte,
-                this.hoogte);
+    public void teken(Pane root) {
+        Rectangle rect = new Rectangle(this.getLinkerBovenhoek().getX(),this.getLinkerBovenhoek().getY(),this.breedte,this.hoogte);
+        rect.setFill(Color.WHITE);
+        rect.setStroke(Color.BLACK);
+        root.getChildren().add(rect);
     }
 }

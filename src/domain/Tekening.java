@@ -1,5 +1,7 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,9 +96,10 @@ public class Tekening implements Drawable {
     }
 
     @Override
-    public void teken(Graphics graphics) {
+    public void teken(Pane root) {
         for(Vorm vorm: vormen){
-            vorm.teken(graphics);
+            vorm.teken(root);
         }
     }
+
 }
