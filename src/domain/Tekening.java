@@ -29,22 +29,17 @@ public class Tekening {
         return naam;
     }
 
-    public boolean voegToe(Vorm v) {
+    public void voegToe(Vorm v) {
         if (v == null) {
             throw new DomainException("");
         }
-        for (Vorm vorm : vormen) {
-            if (v.equals(vorm)) {
-                return false;
-            }
-        }
 
-      /*  if (!(v.getOmhullende().getMinimumX() >= MIN_X && v.getOmhullende().getMinimumY() >= MIN_Y &&
+        if (!(v.getOmhullende().getMinimumX() >= MIN_X && v.getOmhullende().getMinimumY() >= MIN_Y &&
                 v.getOmhullende().getMaximumX() <= MAX_X && v.getOmhullende().getMaximumY() <= MAX_Y)) {
-            throw new DomainException("Vorm niet binnen grenzen");         } */
+            throw new DomainException("Vorm niet binnen grenzen");
+        }
 //TODO voegtoe fiksen pls xx
-        vormen.add(v);
-        return true;
+        getVormen().add(v);
     }
 
     public Vorm getVorm(int index){
@@ -91,5 +86,9 @@ public class Tekening {
                 ", MAX_X=" + MAX_X +
                 ", MAX_Y=" + MAX_Y +
                 '}';
+    }
+
+    public ArrayList<Vorm> getVormen() {
+        return vormen;
     }
 }

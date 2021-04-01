@@ -9,7 +9,16 @@ public class LijnStuk extends Vorm {
 
     public LijnStuk(Punt startPunt, Punt eindPunt){
         setStartPuntEnEindPunt(startPunt, eindPunt);
-        this.omhullende = new Omhullende(startPunt,eindPunt.getX() - startPunt.getX(),startPunt.getX());
+        this.omhullende = new Omhullende(this.getLinkerBovenHoek(),
+                Math.max(startPunt.getX(), eindPunt.getX())
+                        - Math.min(startPunt.getX(), eindPunt.getX()),
+                Math.max(startPunt.getY(),
+                        eindPunt.getY()) - Math.min(startPunt.getY(), eindPunt.getY()));
+    }
+
+    public Punt getLinkerBovenHoek() {
+        return new Punt(Math.min(startPunt.getX(), eindPunt.getX()),
+                Math.min(startPunt.getY(), eindPunt.getY()));
     }
 
     public Punt getEindPunt() {
