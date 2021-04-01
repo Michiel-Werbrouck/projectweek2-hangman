@@ -2,8 +2,13 @@ package domain;
 import javafx.scene.paint.Color;
 public abstract class Vorm {
     private Color Kleur;
+    public  Vorm(Color Kleur){
+        setKleur(Kleur);
+    }
 
-
+    public Vorm () {
+        this.Kleur = Color.WHITE;
+    }
 
     public void setKleur(Color Kleur){
         if (Kleur==null){
@@ -12,15 +17,11 @@ public abstract class Vorm {
         this.Kleur = Kleur;
     }
 
-
-    public abstract String toString();
-
-
-
     public Color getKleur() {
         return Kleur;
     }
 
+    public abstract String toString();
     public abstract Omhullende getOmhullende();
 
 }
