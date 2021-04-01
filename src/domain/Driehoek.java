@@ -1,11 +1,6 @@
 package domain;
 
-import domain.Punt;
-import javafx.scene.paint.Color;
-
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class Driehoek extends Vorm {

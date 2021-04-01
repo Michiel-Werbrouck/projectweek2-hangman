@@ -1,10 +1,12 @@
 package ui;
 
-import javafx.scene.layout.GridPane;
 import domain.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.*;
-import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Polyline;
+import javafx.scene.shape.Rectangle;
 
 
 public class TekenVenster {
@@ -34,8 +36,8 @@ public class TekenVenster {
         Polyline driehoekDak = new Polyline();
         driehoekDak.setFill(Color.RED);
         driehoekDak.setStroke(Color.BLACK);
-        driehoekDak.getPoints().addAll(new Double[]{(double) dak.getHoekPunt1().getX(), (double) dak.getHoekPunt1().getY(), (double) dak.getHoekPunt2().getX(),
-                (double) dak.getHoekPunt2().getY(), (double) dak.getHoekPunt3().getX(), (double) dak.getHoekPunt3().getY()});
+        driehoekDak.getPoints().addAll((double) dak.getHoekPunt1().getX(), (double) dak.getHoekPunt1().getY(), (double) dak.getHoekPunt2().getX(),
+                (double) dak.getHoekPunt2().getY(), (double) dak.getHoekPunt3().getX(), (double) dak.getHoekPunt3().getY());
 
         root.getChildren().addAll(cirkelBoomKruin, lijnBoomstam, rechthoekGebouw, driehoekDak);
 

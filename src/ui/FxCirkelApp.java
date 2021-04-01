@@ -1,6 +1,5 @@
 package ui;
 
-import domain.Tekening;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;

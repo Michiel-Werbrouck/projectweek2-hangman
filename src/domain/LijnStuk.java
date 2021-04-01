@@ -1,6 +1,5 @@
 package domain;
 
-import domain.*;
 import java.util.Objects;
 
 public class LijnStuk extends Vorm {

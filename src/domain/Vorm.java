@@ -1,5 +1,7 @@
 package domain;
+
 import javafx.scene.paint.Color;
+
 public abstract class Vorm {
     private Color Kleur;
     public  Vorm(Color Kleur){
@@ -23,5 +25,4 @@ public abstract class Vorm {
 
     public abstract String toString();
     public abstract Omhullende getOmhullende();
-
 }
