@@ -16,13 +16,14 @@ public class FxHangManApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        WoordenLezer woordenlezer = new WoordenLezer("hangman.txt");
+        WoordenLezer woordenlezer = new WoordenLezer("C:\\Users\\marte\\Dropbox\\school\\TI\\semester 2\\project week\\hangman\\projectweek2-hangman\\src\\db\\domain\\hangman.txt");
         WoordenLijst woordenlijst = woordenlezer.lees();
 
         VBox root = new VBox();
-        Scene scene = new Scene(root,400,450);
+        Scene scene = new Scene(root,600,650);
         TextField invoerNaam = new TextField("Geef de naam van de speler");
         root.getChildren().add(invoerNaam);
+
 
         primaryStage.setScene(scene);
 

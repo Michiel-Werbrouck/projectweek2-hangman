@@ -12,11 +12,12 @@ public class WoordenLezer {
     private String pathToFile;
 
     public WoordenLezer(String pathToFile) {
-
         gelezenWoorden = new ArrayList<>();
         if(pathToFile == null || pathToFile.trim().isEmpty()){
             throw new DbException("Pad mag niet leeg zijn");
         }
+
+        this.pathToFile = pathToFile;
 
     }
 

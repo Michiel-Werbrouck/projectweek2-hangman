@@ -69,7 +69,7 @@ public class Cirkel extends Vorm implements Drawable {
     @Override
     public void teken(Pane root) {
         Circle circle = new Circle(middelpunt.getX(),middelpunt.getY(),radius);
-        circle.setFill(Color.GREEN);
+        circle.setFill(Color.WHITE);
         circle.setStroke(Color.BLACK);
         root.getChildren().add(circle);
 

@@ -41,8 +41,7 @@ public class Tekening implements Drawable {
                 v.getOmhullende().getMaximumX() <= MAX_X && v.getOmhullende().getMaximumY() <= MAX_Y)) {
             throw new DomainException("Vorm niet binnen grenzen");
         }
-//TODO voegtoe fiksen pls xx
-        getVormen().add(v);
+        vormen.add(v);
     }
 
     public Vorm getVorm(int index){
@@ -98,7 +97,9 @@ public class Tekening implements Drawable {
     @Override
     public void teken(Pane root) {
         for(Vorm vorm: vormen){
-            vorm.teken(root);
+            if(vorm.isZichtbaar()){
+                vorm.teken(root);
+            }
         }
     }
 

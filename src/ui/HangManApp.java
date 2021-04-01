@@ -5,6 +5,7 @@ import domain.Speler;
 import db.domain.WoordenLijst;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -13,11 +14,13 @@ import javafx.scene.text.Text;
 
 public class HangManApp {
     private HBox hbox= new HBox();
+    private HBox label = new HBox();
     private HBox invoerBox = new HBox();
+    private HBox uitvoer = new HBox();
 
     private Text hintwoordUitvoer = new Text();
-    private Button raadButton = new Button("raad");
-    private TextField invoerLetter = new TextField("Welke letter?");
+    private Label invoerLetterLabel = new Label("Geef een letter:");
+    private TextField invoerLetter = new TextField();
     private HangMan hangman ;
 
     private TekenVenster tekening;
@@ -31,46 +34,44 @@ public class HangManApp {
 
         hintwoordUitvoer.setText(this.hangman.getHint());
         hbox.setAlignment(Pos.BOTTOM_LEFT);
+        Text uitvoer1 = new Text();
+        uitvoer1.setText("Rarara, welk woord zoeken we?");
         hbox.getChildren().add(hintwoordUitvoer);
-        hbox.getChildren().add(raadButton);
         invoerBox.getChildren().add(invoerLetter);
-        invoerBox.setDisable(true);
+        label.getChildren().add(invoerLetterLabel);
+        uitvoer.getChildren().add(uitvoer1);
 
+        root.getChildren().addAll(pane, uitvoer, hbox, label, invoerBox);
+        root.setLayoutX(10);
 
-        root.getChildren().addAll(pane, hbox, invoerBox);
-
-
-        raadButton.setOnAction(eventRaad ->{
-            aantal++;
-            if (hangman.isGewonnen()) {
-                raadButton.setDisable(true);
-                hbox.getChildren().clear();
-                invoerBox.getChildren().clear();
-                hintwoordUitvoer.setText("Goed gedaan " + speler.getNaam() + " je hebt het woord geraden in " + aantal + " stappen!!");
-                hbox.getChildren().add(hintwoordUitvoer);
-            }
-            else if (hangman.isGameOver()){
-                raadButton.setDisable(true);
-                hbox.getChildren().clear();
-                invoerBox.getChildren().clear();
-                hintwoordUitvoer.setText("Jammer " + speler.getNaam() + " je hebt het woord niet geraden!!");
-                hbox.getChildren().add(hintwoordUitvoer);
-            }
-            else{
-                invoerBox.setDisable(false);
-                invoerLetter.clear();
-            }
-
-        });
 
         invoerLetter.setOnAction(eventIngaveLetter -> {
+            aantal++;
             if (hangman.raad(invoerLetter.getText().charAt(0))) {
                 hintwoordUitvoer.setText(this.hangman.getHint());
             }
             else {
                 this.tekening = new TekenVenster(pane,this.hangman.getTekening());
             }
-            invoerBox.setDisable(true);
+            if (hangman.isGewonnen()) {
+                hbox.getChildren().clear();
+                invoerBox.getChildren().clear();
+                label.getChildren().clear();
+                uitvoer.getChildren().clear();
+                hintwoordUitvoer.setText("Goed gedaan " + speler.getNaam() + " je hebt het woord geraden in " + aantal + " stappen!!");
+                hbox.getChildren().add(hintwoordUitvoer);
+            }
+            else if (hangman.isGameOver()){
+                hbox.getChildren().clear();
+                invoerBox.getChildren().clear();
+                label.getChildren().clear();
+                uitvoer.getChildren().clear();
+                hintwoordUitvoer.setText("Jammer " + speler.getNaam() + " je hebt het woord niet geraden!!");
+                hbox.getChildren().add(hintwoordUitvoer);
+            }
+            else{
+                invoerLetter.clear();
+            }
         });
 
     }
