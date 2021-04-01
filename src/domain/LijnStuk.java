@@ -1,8 +1,9 @@
 package domain;
 
+import java.awt.*;
 import java.util.Objects;
 
-public class LijnStuk extends Vorm {
+public class LijnStuk extends Vorm implements Drawable{
     private Punt startPunt;
     private Punt eindPunt;
     private Omhullende omhullende;
@@ -64,5 +65,16 @@ public class LijnStuk extends Vorm {
     @Override
     public Omhullende getOmhullende() {
         return omhullende;
+    }
+
+    @Override
+    public void teken(Graphics graphics) {
+
+        Graphics2D graphics2D = (Graphics2D) graphics;
+        graphics2D.setStroke(new BasicStroke(5));
+        graphics.drawLine(this.startPunt.getX(), this
+                .startPunt.getY(), this.eindPunt.getX(), this
+                .eindPunt.getY());
+
     }
 }

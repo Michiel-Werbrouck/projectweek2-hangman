@@ -2,7 +2,7 @@ package domain;
 
 import javafx.scene.paint.Color;
 
-public abstract class Vorm {
+public abstract class Vorm implements Drawable {
     private Color Kleur;
     private boolean isZichtbaar;
     public  Vorm(Color Kleur){
