@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import db.domain.WoordenLijst;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,6 @@
-package domain;
+package db.domain;
+
+import domain.DomainException;
 
 import java.util.ArrayList;
 import java.util.Random;
