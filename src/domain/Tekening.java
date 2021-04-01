@@ -29,14 +29,22 @@ public class Tekening {
         return naam;
     }
 
-    public void voegToe(Vorm vorm){
-        if (vorm == null){
-            throw new DomainException("Geef geldige vorm");
+    public boolean voegToe(Vorm v) {
+        if (v == null) {
+            throw new DomainException("");
         }
-        if (vormen.contains(vorm)){
-            throw new DomainException("Tekening bavat deze vorm al");
+        for (Vorm vorm : vormen) {
+            if (v.equals(vorm)) {
+                return false;
+            }
         }
-        vormen.add(vorm);
+
+      /*  if (!(v.getOmhullende().getMinimumX() >= MIN_X && v.getOmhullende().getMinimumY() >= MIN_Y &&
+                v.getOmhullende().getMaximumX() <= MAX_X && v.getOmhullende().getMaximumY() <= MAX_Y)) {
+            throw new DomainException("Vorm niet binnen grenzen");         } */
+//TODO voegtoe fiksen pls xx
+        vormen.add(v);
+        return true;
     }
 
     public Vorm getVorm(int index){

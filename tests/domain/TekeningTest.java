@@ -16,6 +16,10 @@ public class TekeningTest {
     private Vorm raambalk1;
     private Vorm raambalk2;
     private Vorm schouwNietInTekening;
+    private Vorm rechthoek;
+    private Vorm cirkel;
+    private Vorm ongeldigeRechthoek;
+
 
     @Before
     public void setUp() {
@@ -27,6 +31,10 @@ public class TekeningTest {
         raambalk1 = new LijnStuk(new Punt(210, 250), new Punt(290, 250));
         raambalk2 = new LijnStuk(new Punt(250, 220), new Punt(250, 280));
         schouwNietInTekening = new Rechthoek(new Punt(150, 150), 20,40);
+        rechthoek = new Rechthoek(new Punt(30,30),20,30);
+        cirkel = new Cirkel(new Punt(10,10),20);
+        ongeldigeRechthoek = new Rechthoek(new Punt(30,30),2000,300);
+
     }
 
     @Test
@@ -94,11 +102,25 @@ public class TekeningTest {
     }
 
     @Test
-    public void equals_moet_true_teruggeven_alsparameter_tekening_is_met_zelfde_aantal_vormen_zelfde_volgorde(){
+    public void equals_moet_true_teruggeven_als_parameter_tekening_is_met_zelfde_aantal_vormen_zelfde_volgorde(){
         Tekening huis = createHuisZonderShouw();
         Tekening huisMetSchouw = createHuisMetSchouw();
         huisMetSchouw.verwijder(schouwNietInTekening);
         assertTrue(huis.equals(huisMetSchouw));
+    }
+
+    @Test(expected = DomainException.class)
+    public void voegToe_moet_exception_gooien_bij_cirkel_met_te_grote_straal()
+    {
+        Tekening tekening = createTekeningMetCirkel();
+        tekening.voegToe(cirkel);
+    }
+
+    @Test(expected = DomainException.class)
+    public void voegToe_moet_exception_gooien_bij_rechthoek_die_te_lange_zijdes_heeft()
+    {
+        Tekening tekening = createTekeningMetRechtHoek();
+        tekening.voegToe(ongeldigeRechthoek);
     }
 
 
@@ -137,6 +159,19 @@ public class TekeningTest {
         huisMetSchouwZonderDeur.voegToe(raambalk2);
         huisMetSchouwZonderDeur.voegToe(schouwNietInTekening);
         return huisMetSchouwZonderDeur;
+    }
+
+    public Tekening createTekeningMetCirkel()
+    {
+        Tekening tekeningMetCirkel = new Tekening("cirkel");
+        return  tekeningMetCirkel;
+    }
+
+    public Tekening createTekeningMetRechtHoek()
+    {
+        Tekening tekeningMetRechthoek = new Tekening("rechthoek");
+        tekeningMetRechthoek.voegToe(rechthoek);
+        return tekeningMetRechthoek;
     }
 
 }

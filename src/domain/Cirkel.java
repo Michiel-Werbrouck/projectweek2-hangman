@@ -18,9 +18,13 @@ public class Cirkel extends Vorm {
         if(radius <= 0 ){
             throw new DomainException("radius moet groter zijn als 0");
         }
+
         this.radius = radius;
 
+
         this.omhullende = new Omhullende(new Punt(middelpunt.getX()-radius, middelpunt.getY()-radius),radius*2,radius*2);
+
+
     }
 
     private void setMiddelpunt(Punt middelpunt) {
