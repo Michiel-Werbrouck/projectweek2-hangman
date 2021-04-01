@@ -22,7 +22,7 @@ public class TekeningHangMan extends Tekening {
         Vorm armRechts = new LijnStuk(new Punt(280, 200), new Punt(330, 170));
         Vorm handLinks = new Cirkel(new Punt(230, 170), 5);
         Vorm handRechts = new Cirkel(new Punt(330, 170), 5);
-        voegToe(galgBodem);
+        /*voegToe(galgBodem);
         voegToe(galgStaaf);
         voegToe(hangbar);
         voegToe(koord);
@@ -39,9 +39,32 @@ public class TekeningHangMan extends Tekening {
         voegToe(armLinks);
         voegToe(armRechts);
         voegToe(handLinks);
-        voegToe(handRechts);
+        voegToe(handRechts);*/
+
+        getVormen().add(galgBodem);
+        getVormen().add(galgStaaf);
+        getVormen().add(hangbar);
+        getVormen().add(koord);
+        getVormen().add(hoofd);
+        getVormen().add(oogLinks);
+        getVormen().add(oogRechts);
+        getVormen().add(neus);
+        getVormen().add(mond);
+        getVormen().add(lijf);
+        getVormen().add(beenLinks);
+        getVormen().add(beenRechts);
+        getVormen().add(voetLinks);
+        getVormen().add(voetRechts);
+        getVormen().add(armLinks);
+        getVormen().add(armRechts);
+        getVormen().add(handLinks);
+        getVormen().add(handRechts);
+
         for (int i = 4; i<18; i++) {
             getVorm(i).setZichtbaar(false);
+        }
+        for (int i = 0; i<4; i++) {
+            getVorm(i).setZichtbaar(true);
         }
     }
 

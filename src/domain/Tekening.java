@@ -49,7 +49,7 @@ public class Tekening implements Drawable {
         if (index<0 || index>vormen.size()){
             throw new DomainException("geef geldige index.");
         }
-        return vormen.get(index-1);
+        return vormen.get(index);
     }
 
     public int getAantalVormen(){

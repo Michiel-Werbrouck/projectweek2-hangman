@@ -31,6 +31,6 @@ public class WoordenLijst {
         if (woorden.isEmpty())
             throw new DomainException("Deze lijst bevat nog geen woorden.");
 
-        return woorden.get(new Random().nextInt(woorden.size()-1));
+        return woorden.get(new Random().nextInt(woorden.size()));
     }
 }

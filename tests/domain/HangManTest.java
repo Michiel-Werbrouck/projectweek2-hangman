@@ -2,8 +2,10 @@ package domain;
 
 import static org.junit.Assert.*;
 
+import db.domain.WoordenLijst;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class HangManTest {
 
