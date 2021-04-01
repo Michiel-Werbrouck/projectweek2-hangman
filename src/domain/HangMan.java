@@ -8,7 +8,7 @@ public class HangMan {
     private WoordenLijst woordenLijst;
     private HintWoord hintWoord;
     private boolean gewonnen;
-    private boolean gameOver;
+    private boolean gameOver =false;
 
     public HangMan(Speler speler, WoordenLijst woordenLijst){
         if(speler == null){
@@ -49,6 +49,20 @@ public class HangMan {
     }
 
     public boolean raad(char letter){
-        return hintWoord.raad(letter);
+        boolean bool = false;
+        if (hintWoord.raad(letter)){
+            bool = true;
+        }
+        else{
+            if (tekeningHangMan.getAantalOnzichtbaar()==1){
+                gameOver=true;
+            }
+            tekeningHangMan.zetVolgendeZichtbaar();
+
+        }
+        if(hintWoord.isGeraden()){
+            gewonnen=true;
+        }
+        return bool;
     }
 }

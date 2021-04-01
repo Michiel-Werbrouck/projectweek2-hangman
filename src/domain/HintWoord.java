@@ -18,7 +18,6 @@ public class HintWoord {
         boolean bool = false;
         for (HintLetter letter : hintwoord){
             if(letter.raad(geradenLetter)){
-                letter.raad(geradenLetter);
                 bool = true;
             }
         }
