@@ -1,8 +1,12 @@
 package domain;
 
-import java.util.Objects;
+import javafx.scene.layout.Pane;
 
-public class LijnStuk extends Vorm {
+import java.awt.*;
+import java.util.Objects;
+import javafx.scene.shape.Line;
+
+public class LijnStuk extends Vorm implements Drawable{
     private Punt startPunt;
     private Punt eindPunt;
     private Omhullende omhullende;
@@ -64,5 +68,14 @@ public class LijnStuk extends Vorm {
     @Override
     public Omhullende getOmhullende() {
         return omhullende;
+    }
+
+    @Override
+    public void teken(Pane root) {
+
+        Line line = new Line(startPunt.getX(),startPunt.getY(),eindPunt.getX(),eindPunt.getY());
+        line.setStrokeWidth(5);
+        root.getChildren().add(line);
+
     }
 }

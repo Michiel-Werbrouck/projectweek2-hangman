@@ -1,10 +1,13 @@
 package domain;
 
+import javafx.scene.layout.Pane;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class Tekening {
+public class Tekening implements Drawable {
     private String naam;
     private ArrayList<Vorm> vormen = new ArrayList<>(0);
     public static final int MIN_X = 0;
@@ -91,4 +94,12 @@ public class Tekening {
     public ArrayList<Vorm> getVormen() {
         return vormen;
     }
+
+    @Override
+    public void teken(Pane root) {
+        for(Vorm vorm: vormen){
+            vorm.teken(root);
+        }
+    }
+
 }

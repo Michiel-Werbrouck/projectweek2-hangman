@@ -1,9 +1,13 @@
 package domain;
 
 
+import java.awt.*;
 import java.util.Objects;
 
-public class Cirkel extends Vorm {
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+public class Cirkel extends Vorm implements Drawable {
     private Punt middelpunt;
     private int radius;
     private Omhullende omhullende;
@@ -60,5 +64,14 @@ public class Cirkel extends Vorm {
     @Override
     public Omhullende getOmhullende() {
         return omhullende;
+    }
+
+    @Override
+    public void teken(Pane root) {
+        Circle circle = new Circle(middelpunt.getX(),middelpunt.getY(),radius);
+        circle.setFill(Color.GREEN);
+        circle.setStroke(Color.BLACK);
+        root.getChildren().add(circle);
+
     }
 }
