@@ -8,7 +8,7 @@ public class HintLetter {
 
     public HintLetter(char letter){
         this.letter = toLowerCase(letter);
-        if (letter==' ' || letter==','){
+        if (letter==' ' || letter==',' || letter=='?' || letter=='.' || letter=='!'){
             isGeraden= true;
         }
         else {
